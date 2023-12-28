@@ -26,6 +26,11 @@ export const Mutation = {
             {nombre: args.nombre, correo: args.correo},
             {new: true, runValidators: true}
         );
+        const colect = await ColeccionModel.findByIdAndUpdate(
+            user?.coleccion,
+            {nombre: user?.nombre+"' collection"},
+            {new: true, runValidators: true}
+        );
         return user;
     },
     //puesto que el delete solo devuelve el usuario borrado, aunque tanbien realice borrado en cadena de su coleccion, solo puede mostrar el usuario porque si se intenta acceder a la coleccion el código lanzara error porque esta ya no existe
